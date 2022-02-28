@@ -5,7 +5,7 @@ import Bookmarks from './components/Bookmarks'
 import Groups from './components/Groups'
 import router from './components/router/index'
 
-interface NotionBookmarkProps {
+interface BookmarkAppProps {
     bookmarks: Bookmark[]
 }
 
@@ -39,7 +39,7 @@ const handleBookmark = (bookmarks: Bookmark[], activePath: string, groups: strin
     return [displayBookmark, displayGroups]
 }
 
-const LouisBookmark: React.FC<NotionBookmarkProps> = (props: NotionBookmarkProps) => {
+const BookmarkApp: React.FC<BookmarkAppProps> = (props: BookmarkAppProps) => {
     const groupTags: string[] = allGroups(props.bookmarks)
     const activePath: string = router.getPath()
     const [DisplayBookmarks, groups] = handleBookmark(props.bookmarks, activePath, groupTags)
@@ -62,4 +62,4 @@ const LouisBookmark: React.FC<NotionBookmarkProps> = (props: NotionBookmarkProps
     )
 }
 
-export default LouisBookmark
+export default BookmarkApp

@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
 import { bookmarks } from './config/bookmark'
-import LouisBookmark from './LouisBookmark'
+import BookmarkApp from './BookmarkApp'
 
 function App() {
     return (
         <div className='app'>
-            <LouisBookmark bookmarks={bookmarks} />
+            <BookmarkApp bookmarks={bookmarks} />
         </div>
     )
 }
