@@ -1,3 +1,14 @@
+.profile-container {
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+}
+
+.profile-container:hover {
+    transform: translateY(-1vh);
+}
+
 .profile {
     height: 15vh;
     width: 10vh;
@@ -23,6 +34,7 @@
     border-radius: 1.5vh;
     -webkit-box-shadow: 0 0 1vh 0 rgba(0, 0, 0, 0.35);
     box-shadow: 0 0 1vh 0 rgba(0, 0, 0, 0.35);
+    user-select: none;
 }
 
 .profile-img {

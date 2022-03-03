@@ -16,7 +16,7 @@ interface ProfileProps {
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
     if (props.type === 'bookmark') {
         return (
-            <a className='profile-bookmark' href={props.url}>
+            <a className='profile-bookmark profile-container' href={props.url}>
                 <figure className='profile'>
                     <div className='profile-img-wrap'>
                         <Image {...props} />
@@ -29,7 +29,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         )
     } else {
         return (
-            <div className='profile-folder' onClick={() => props.handleClick(props.url)}>
+            <div className='profile-folder profile-container' onClick={() => props.handleClick(props.url)}>
                 <figure className='profile'>
                     <div className='profile-img-wrap'>
                         <Image {...props} />
