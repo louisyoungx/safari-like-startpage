@@ -1,6 +1,9 @@
-import { CHANGE } from './types'
+import { CHANGE, OPEN, CLOSE } from './types'
 
-const wallpaper = (state = '/wallpaper/Safari_Background_Pink.jpg', action: any) => {
+const wallpaper = (
+    state = '/img/wallpaper/Safari_Background_Pink.jpg',
+    action: any
+) => {
     switch (action.type) {
         case CHANGE:
             return action.url
@@ -9,4 +12,18 @@ const wallpaper = (state = '/wallpaper/Safari_Background_Pink.jpg', action: any)
     }
 }
 
-export { wallpaper }
+const settingDisplay = (
+    state = false,
+    action: any
+) => {
+    switch (action.type) {
+        case OPEN:
+            return true
+        case CLOSE:
+            return false
+        default:
+            return state
+    }
+}
+
+export { wallpaper, settingDisplay }

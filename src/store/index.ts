@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import { wallpaper } from './reducers'
+import { wallpaper, settingDisplay } from './reducers'
 
 const store = combineReducers({
-  wallpaper,
+    wallpaper,
+    settingDisplay,
 })
 
 export default store

@@ -1,3 +1,7 @@
 const CHANGE = 'CHANGE'
 
-export { CHANGE }
+const OPEN = 'OPEN'
+
+const CLOSE = 'CLOSE'
+
+export { CHANGE, OPEN, CLOSE }
