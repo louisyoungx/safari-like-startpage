@@ -1,0 +1,60 @@
+.settings {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+}
+
+.settings-button {
+    width: 5vh;
+    height: 5vh;
+    cursor: pointer;
+    user-select: none;
+    float: right;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.settings-button:hover {
+    transform: scale(1.2);
+}
+
+.settings-button-img {
+    width: 5vh;
+    height: 5vh;
+    user-select: none;
+}
+
+.settings-bar {
+    width: 46vh;
+    height: 26vh;
+    border-radius: 1.5vh;
+    background-color: rgba(255, 255, 255, 0.75);
+    transform: translateY(-2vh);
+}
+
+.settings-bar-imgs {
+    height: 26vh;
+    width: 40vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+.settings-bar-img-container {
+    height: 20vh;
+    vertical-align: middle;
+    margin: 0 1vh;
+    cursor: pointer;
+}
+
+.settings-bar-img {
+    height: 20vh;
+    border-radius: 1.5vh;
+}
