@@ -1,13 +1,15 @@
 import './App.css'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import store from './store'
 import BookmarkApp from './BookmarkApp'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, store } from './store/persist'
 
-function App() {
+const App = () => {
     return (
-        <Provider store={createStore(store)}>
-            <BookmarkApp />
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <BookmarkApp />
+            </PersistGate>
         </Provider>
     )
 }

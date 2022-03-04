@@ -14,7 +14,7 @@ const Image: React.FC<Bookmark> = (props: Bookmark) => {
         const proxyList: string[] = [
             `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.url}&size=64`,
             `http://logo.clearbit.com/${props.url}?size=80&greyscale=true`,
-            '/notFound.svg',
+            '/img/icon/notFound.svg',
         ]
         useSrc(proxyList[errIndex])
         useErrIndex(errIndex + 1)
@@ -24,6 +24,7 @@ const Image: React.FC<Bookmark> = (props: Bookmark) => {
         setTimeout(() => {
             InitImage()
         }, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
