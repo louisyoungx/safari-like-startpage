@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { Bookmark, mainView } from './config/bookmark'
+import React, { useState } from 'react'
+import {
+    Bookmark,
+    mainView,
+    bookmarks as rawBookmarks,
+} from './config/bookmark'
+import router from './router/index'
 import Title from './components/Title'
 import Bookmarks from './components/Bookmarks'
 import Groups from './components/Groups'
-import router from './components/router/index'
-
-interface BookmarkAppProps {
-    bookmarks: Bookmark[]
-}
+import { switchWallpaper } from './store/actions'
+import { connect } from 'react-redux'
 
 const allGroups = (bookmarks: Bookmark[]) => {
     let groups: string[] = []
@@ -21,7 +23,11 @@ const allGroups = (bookmarks: Bookmark[]) => {
     return groups
 }
 
-const handleBookmark = (bookmarks: Bookmark[], activePath: string, groups: string[]) => {
+const handleBookmark = (
+    bookmarks: Bookmark[],
+    activePath: string,
+    groups: string[]
+) => {
     let displayBookmark: Bookmark[]
     if (activePath === '') {
         displayBookmark = bookmarks.filter(item => item.views === mainView)
@@ -39,27 +45,51 @@ const handleBookmark = (bookmarks: Bookmark[], activePath: string, groups: strin
     return [displayBookmark, displayGroups]
 }
 
-const BookmarkApp: React.FC<BookmarkAppProps> = (props: BookmarkAppProps) => {
-    const groupTags: string[] = allGroups(props.bookmarks)
+let BookmarkApp: React.FC = (props: any) => {
+    const groupTags: string[] = allGroups(rawBookmarks)
     const activePath: string = router.getPath()
-    const [DisplayBookmarks, groups] = handleBookmark(props.bookmarks, activePath, groupTags)
+    const [DisplayBookmarks, groups] = handleBookmark(
+        rawBookmarks,
+        activePath,
+        groupTags
+    )
     const [bookmarks, setBookmarks] = useState(DisplayBookmarks)
+    console.log(props.wallpaper)
+    const backgroundStyles = {
+        backgroundImage: `url("${props.wallpaper}")`,
+    }
     const switchGroup = (url: string) => {
         router.changePath(url)
-        setBookmarks(handleBookmark(props.bookmarks, url.slice(1), groupTags)[0])
+        setBookmarks(handleBookmark(rawBookmarks, url.slice(1), groupTags)[0])
     }
     return (
-        <div className='bookmark'>
-            <div className='views'>
-                <Title title={activePath === '' ? mainView : activePath} />
-                <Bookmarks bookmarks={bookmarks} />
-            </div>
-            <div className='groups'>
-                <Title title='Group' />
-                <Groups groups={groups} switchGroup={switchGroup} />
+        <div className='app' style={backgroundStyles}>
+            <div className='bookmark'>
+                <div className='views'>
+                    <Title title={activePath === '' ? mainView : activePath} />
+                    <Bookmarks bookmarks={bookmarks} />
+                </div>
+                <div className='groups'>
+                    <Title title='Group' />
+                    <Groups groups={groups} switchGroup={switchGroup} />
+                </div>
             </div>
         </div>
     )
 }
+
+const mapStateToProps = (state: any) => {
+    return { wallpaper: state.wallpaper }
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        switchWallpaper: (url: string) => {
+            dispatch(switchWallpaper(url))
+        },
+    }
+}
+
+BookmarkApp = connect(mapStateToProps, mapDispatchToProps)(BookmarkApp)
 
 export default BookmarkApp
