@@ -1,19 +1,7 @@
-:root {
-    color: #fff;
-}
-
-html {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 .app {
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% auto;
+    background-position: center center;
     background-attachment: fixed;
     display: flex;
     flex-direction: row;
@@ -46,4 +34,10 @@ html {
     justify-content: flex-start;
     width: 100%;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 714px) {
+    .app {
+        background-size: auto 100%;
+    }
 }
