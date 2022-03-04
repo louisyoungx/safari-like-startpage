@@ -8,8 +8,9 @@ import router from './router/index'
 import Title from './components/Title'
 import Bookmarks from './components/Bookmarks'
 import Groups from './components/Groups'
-import { switchWallpaper } from './store/actions'
+import { settingDisplayChange, switchWallpaper } from './store/actions'
 import { connect } from 'react-redux'
+import Settings from './components/Settings'
 
 const allGroups = (bookmarks: Bookmark[]) => {
     let groups: string[] = []
@@ -37,7 +38,7 @@ const handleBookmark = (
     const displayGroups: Bookmark[] = groups.map(group => ({
         name: group,
         url: '/' + group,
-        img: '/folder.svg',
+        img: '/img/icon/folder.svg',
         tags: null,
         views: null,
         discription: '',
@@ -54,7 +55,6 @@ let BookmarkApp: React.FC = (props: any) => {
         groupTags
     )
     const [bookmarks, setBookmarks] = useState(DisplayBookmarks)
-    console.log(props.wallpaper)
     const backgroundStyles = {
         backgroundImage: `url("${props.wallpaper}")`,
     }
@@ -63,7 +63,11 @@ let BookmarkApp: React.FC = (props: any) => {
         setBookmarks(handleBookmark(rawBookmarks, url.slice(1), groupTags)[0])
     }
     return (
-        <div className='app' style={backgroundStyles}>
+        <div
+            className='app'
+            style={backgroundStyles}
+            onClick={() => props.settingDisplayChange(false)}
+        >
             <div className='bookmark'>
                 <div className='views'>
                     <Title title={activePath === '' ? mainView : activePath} />
@@ -74,18 +78,26 @@ let BookmarkApp: React.FC = (props: any) => {
                     <Groups groups={groups} switchGroup={switchGroup} />
                 </div>
             </div>
+            <Settings />
         </div>
     )
 }
 
 const mapStateToProps = (state: any) => {
-    return { wallpaper: state.wallpaper }
+    return {
+        wallpaper: state.wallpaper,
+        settingDisplay: state.settingDisplay,
+    }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
         switchWallpaper: (url: string) => {
             dispatch(switchWallpaper(url))
+        },
+        settingDisplayChange: (tag: boolean) => {
+            console.log('app', tag)
+            dispatch(settingDisplayChange(tag))
         },
     }
 }
