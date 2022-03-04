@@ -1,4 +1,4 @@
-import { mainView } from "../../config/bookmark"
+import { mainView } from "../config/bookmark"
 
 class Router {
     private main: string
