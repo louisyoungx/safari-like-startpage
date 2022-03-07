@@ -1,6 +1,6 @@
 # Safari-like Start Page
 
-Safari-like Start Page
+Safari-like Start Page - [Online Preview](https://nav.rocke.top)
 
 ![Safari-like Start Page 1](public/img/docs/ex1.jpg)
 
@@ -25,7 +25,7 @@ Once cloned, switch to the master branch and navigate to the folder by typing `c
 npm install
 
 # Start the project
-npm start
+npm run start
 ```
 
 ## User Manual
