@@ -70,11 +70,15 @@ let BookmarkApp: React.FC = (props: any) => {
         >
             <div className='bookmark'>
                 <div className='views'>
-                    <Title title={activePath === '' ? mainView : activePath} />
+                    <Title
+                        title={activePath === '' ? mainView : activePath}
+                        isGoBack={activePath !== ''}
+                        goBack={() => switchGroup('/')}
+                    />
                     <Bookmarks bookmarks={bookmarks} />
                 </div>
-                <div className='groups'>
-                    <Title title='Group' />
+                <div className='groups' style={{display: activePath === '' ? 'block' : 'none'}}>
+                    <Title title='Group' isGoBack={false} goBack={() => switchGroup('/')} />
                     <Groups groups={groups} switchGroup={switchGroup} />
                 </div>
             </div>
@@ -96,7 +100,6 @@ const mapDispatchToProps = (dispatch: any) => {
             dispatch(switchWallpaper(url))
         },
         settingDisplayChange: (tag: boolean) => {
-            console.log('app', tag)
             dispatch(settingDisplayChange(tag))
         },
     }

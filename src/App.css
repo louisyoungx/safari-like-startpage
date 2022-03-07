@@ -23,9 +23,21 @@
 }
 
 .title {
+    height: 2rem;
     font-weight: bold;
     margin: 0 2.5vh;
     font-size: 24px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: default;
+}
+
+.goBack {
+    width: 1.8rem;
+    margin-right: .5rem;
+    cursor: pointer;
 }
 
 .bookmarks {
