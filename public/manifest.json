@@ -1,6 +1,6 @@
 {
-  "short_name": "Bookmark App",
-  "name": "My Bookmark App",
+  "short_name": "Safari Start",
+  "name": "Safari-like Start Page",
   "icons": [
     {
       "src": "favicon.ico",
